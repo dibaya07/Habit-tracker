@@ -1,0 +1,8 @@
+{
+  "name": "Habitora — Habit Tracker & Analytics",
+  "description": "Build better habits one day at a time. Track your daily habits, stay consistent, get smart insights, and download printable habit sheets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

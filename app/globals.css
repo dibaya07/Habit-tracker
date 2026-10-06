@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-app: #fafcf9;
+    --bg-card: #ffffff;
+    --text-primary: #123524;
+    --text-muted: #4e6b5c;
+    --border-color: #dce8df;
+    --accent-emerald: #183f2e;
+  }
+
+  .dark {
+    --bg-app: #071912;
+    --bg-card: #091f17;
+    --text-primary: #f8fafc;
+    --text-muted: #8aa999;
+    --border-color: #173f30;
+    --accent-emerald: #2fe196;
+  }
+
+  body {
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+  }
+}
+
+/* Custom Serif Headline & Handwriting styles */
+.font-editorial {
+  font-family: var(--font-playfair), 'Playfair Display', Cormorant, Georgia, Cambria, 'Times New Roman', serif;
+}
+
+.font-script {
+  font-family: var(--font-caveat), 'Caveat', 'Patrick Hand', 'Comic Sans MS', cursive;
+}
+
+/* Custom Scrollbar for Spreadsheet Grids */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 9999px;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(21, 163, 103, 0.35);
+  border-radius: 9999px;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(47, 225, 150, 0.35);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(47, 225, 150, 0.6);
+}
+
+/* Print Stylesheet for A4 & A5 Habit Sheets */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+  
+  html, body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-size: 11pt !important;
+  }
+  
+  .no-print, header, nav, footer, button, .modal-backdrop {
+    display: none !important;
+  }
+  
+  .print-container {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+  }
+
+  .print-page-break {
+    page-break-after: always;
+  }
+}
