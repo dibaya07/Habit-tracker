@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Navbar } from '../components/Navbar';
+import { Navbar } from '../components/navbar/Navbar';
 import { HeroSection } from '../components/HeroSection';
 import { ShowcaseSection } from '../components/ShowcaseSection';
 import { FeaturesGridSection } from '../components/FeaturesGridSection';
@@ -19,6 +19,7 @@ import { CreateTrackerModal } from '../components/modals/CreateTrackerModal';
 import { ManageHabitsModal } from '../components/modals/ManageHabitsModal';
 import { AuthModal } from '../components/modals/AuthModal';
 import { FeedbackModal } from '../components/modals/FeedbackModal';
+import HabitTracker from '@/components/tracker/HabitTracker';
 
 export default function Home() {
   return (
@@ -39,6 +40,7 @@ export default function Home() {
       <HowItWorksSection />
 
       {/* Core Digital Habit Tracker Sheet */}
+      {/* <HabitTracker/> */}
       <HabitTrackerGrid />
 
       {/* Real-time Analytics Dashboard */}
@@ -48,7 +50,7 @@ export default function Home() {
       <PrintableTrackerSheet />
 
       {/* Transparent Pricing Plans */}
-      <PricingSection />
+      {/* <PricingSection /> */}
 
       {/* Social Proof & Testimonials */}
       <TestimonialsSection />

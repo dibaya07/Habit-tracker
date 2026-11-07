@@ -4,6 +4,7 @@ import React from 'react';
 import { ArrowRight, Play, Calendar, CheckSquare, BarChart2, Heart } from 'lucide-react';
 import { useHabitTracker } from '../lib/context/HabitTrackerContext';
 import { SITE_CONFIG } from '../lib/data/site-config';
+import Link from 'next/link';
 
 export const HeroSection: React.FC = () => {
   // const { setIsCreateModalOpen } = useHabitTracker();
@@ -75,13 +76,16 @@ export const HeroSection: React.FC = () => {
         <div className="relative inline-flex flex-col items-center">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
             {/* Get Started -> Button */}
-            <button
-              // onClick={() => setIsCreateModalOpen(true)}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm sm:text-base font-medium bg-[#183f2e] hover:bg-[#123325] text-white shadow-sm transition-all duration-200 active:scale-[0.98] cursor-pointer"
-            >
-              <span>Get Started</span>
+            <Link href={'/create_tracker'} className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm sm:text-base font-medium bg-[#183f2e] hover:bg-[#123325] text-white shadow-sm transition-all duration-200 active:scale-[0.98] cursor-pointer">
+               <span>Get Started</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
+            {/* <button
+              onClick={re}
+              
+            >
+             
+            </button> */}
 
             {/* How It Works Button */}
             <a

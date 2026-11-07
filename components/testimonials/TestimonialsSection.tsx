@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Star, ArrowRight } from 'lucide-react';
 import { SITE_CONFIG } from '../../lib/data/site-config';
 import { useHabitTracker } from '../../lib/context/HabitTrackerContext';
+import Link from 'next/link';
 
 export const TestimonialsSection: React.FC = () => {
   const { setIsCreateModalOpen } = useHabitTracker();
@@ -73,13 +74,14 @@ export const TestimonialsSection: React.FC = () => {
               Join thousands of people creating a healthier, happier, more productive life.
             </p>
             <div className="pt-2">
-              <button
-                onClick={() => setIsCreateModalOpen(true)}
+              <Link
+                // onClick={() => setIsCreateModalOpen(true)}
+                href={'/create_tracker'}
                 className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-bold bg-[#2fe196] text-[#071912] hover:bg-[#28cf88] shadow-lg shadow-emerald-500/20 active:scale-[0.98] transition-all cursor-pointer"
               >
                 <span>Get Started</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
