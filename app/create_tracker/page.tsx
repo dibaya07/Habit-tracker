@@ -62,7 +62,9 @@ export default function Home () {
     setSelectedHabits([...selectedHabits, newHabit]);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
+    const res = await fetch ('http://localhost:3000/api/tracker')
+    console.log(await res.json())
     const finalDays = isCustomDuration
       ? Math.max(1, Math.min(365, parseInt(customDaysInput, 10) || 30))
       : selectedDuration;

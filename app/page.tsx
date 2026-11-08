@@ -20,8 +20,15 @@ import { ManageHabitsModal } from '../components/modals/ManageHabitsModal';
 import { AuthModal } from '../components/modals/AuthModal';
 import { FeedbackModal } from '../components/modals/FeedbackModal';
 import HabitTracker from '@/components/tracker/HabitTracker';
+import { createClient } from '@/utils/supabase/server'
+import { cookies } from 'next/headers'
 
 export default function Home() {
+
+  //  const cookieStore = await cookies()
+  // const supabase = createClient(cookieStore)
+
+  // const { data: todos } = await supabase.from('todos').select()
   return (
     <main className="min-h-screen bg-[#fafcf9] dark:bg-[#071912] text-[#123524] dark:text-slate-100 transition-colors duration-200">
       {/* Top Navigation */}
@@ -44,31 +51,46 @@ export default function Home() {
       <HabitTrackerGrid />
 
       {/* Real-time Analytics Dashboard */}
-      <AnalyticsDashboard />
+      {/* <AnalyticsDashboard /> */}
 
       {/* Printable Sheet (A4 & A5) Engine */}
-      <PrintableTrackerSheet />
+      {/* <PrintableTrackerSheet /> */}
 
       {/* Transparent Pricing Plans */}
       {/* <PricingSection /> */}
 
       {/* Social Proof & Testimonials */}
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
 
       {/* Frequently Asked Questions */}
-      <FAQSection />
+      {/* <FAQSection /> */}
 
       {/* Tasteful Support / Coffee Section */}
-      <SupportDonationSection />
+      {/* <SupportDonationSection /> */}
 
       {/* Minimal Footer */}
       <Footer />
 
       {/* Modals */}
       <CreateTrackerModal />
-      <ManageHabitsModal />
-      <AuthModal />
-      <FeedbackModal />
+      {/* <ManageHabitsModal /> */}
+      {/* <AuthModal /> */}
+      {/* <FeedbackModal /> */}
     </main>
   );
 }
+
+
+
+
+// export default async function Page() {
+ 
+
+//   return (
+//     <ul>
+//       {todos?.map((todo) => (
+//         <li key={todo.id}>{todo.name}</li>
+//       ))}
+//     </ul>
+//   )
+// }
