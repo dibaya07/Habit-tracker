@@ -1,10 +1,12 @@
+import Image from 'next/image'
 import React from 'react'
 
 export default function BrandLogo() {
   return (
     <a href="#" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 flex items-center justify-center text-[#183f2e] dark:text-[#2fe196] group-hover:scale-105 transition-transform duration-200">
+          <div className="w-8 h-8 flex items-center justify-center text-[#183f2e] dark:text-[#2fe196] group-hover:scale-105 transition-transform duration-200 ">
             {/* Elegant botanical double-leaf icon matching screenshot */}
+            <Image src={'/logo.jpeg'} height={100} width={100} alt='Brand_logo'/>
             {/* <svg
               className="w-6 h-6 fill-current"
               viewBox="0 0 24 24"

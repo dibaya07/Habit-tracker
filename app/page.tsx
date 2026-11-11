@@ -3,23 +3,23 @@
 import React from 'react';
 import { Navbar } from '../components/navbar/Navbar';
 import { HeroSection } from '../components/HeroSection';
-import { ShowcaseSection } from '../components/ShowcaseSection';
-import { FeaturesGridSection } from '../components/FeaturesGridSection';
-import { HowItWorksSection } from '../components/HowItWorksSection';
-import { HabitTrackerGrid } from '../components/tracker/HabitTrackerGrid';
-import { AnalyticsDashboard } from '../components/analytics/AnalyticsDashboard';
-import { PrintableTrackerSheet } from '../components/print/PrintableTrackerSheet';
-import { PricingSection } from '../components/pricing/PricingSection';
-import { TestimonialsSection } from '../components/testimonials/TestimonialsSection';
-import { FAQSection } from '../components/faq/FAQSection';
-import { SupportDonationSection } from '../components/support/SupportDonationSection';
+// import { ShowcaseSection } from '../components/ShowcaseSection';
+// import { FeaturesGridSection } from '../components/FeaturesGridSection';
+// import { HowItWorksSection } from '../components/HowItWorksSection';
+// import { HabitTrackerGrid } from '../components/tracker/HabitTrackerGrid';
+// import { AnalyticsDashboard } from '../components/analytics/AnalyticsDashboard';
+// import { PrintableTrackerSheet } from '../components/print/PrintableTrackerSheet';
+// import { PricingSection } from '../components/pricing/PricingSection';
+// import { TestimonialsSection } from '../components/testimonials/TestimonialsSection';
+// import { FAQSection } from '../components/faq/FAQSection';
+// import { SupportDonationSection } from '../components/support/SupportDonationSection';
 import { Footer } from '../components/Footer';
 
 import { CreateTrackerModal } from '../components/modals/CreateTrackerModal';
-import { ManageHabitsModal } from '../components/modals/ManageHabitsModal';
-import { AuthModal } from '../components/modals/AuthModal';
-import { FeedbackModal } from '../components/modals/FeedbackModal';
-import HabitTracker from '@/components/tracker/HabitTracker';
+// import { ManageHabitsModal } from '../components/modals/ManageHabitsModal';
+// import { AuthModal } from '../components/modals/AuthModal';
+// import { FeedbackModal } from '../components/modals/FeedbackModal';
+// import HabitTracker from '@/components/tracker/HabitTracker';
 import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 
@@ -38,17 +38,17 @@ export default function Home() {
       <HeroSection />
 
       {/* Visual Showcase Cluster */}
-      <ShowcaseSection />
+      {/* <ShowcaseSection /> */}
 
       {/* Core Features Grid */}
-      <FeaturesGridSection />
+      {/* <FeaturesGridSection /> */}
 
       {/* How It Works with Interactive Canvas */}
-      <HowItWorksSection />
+      {/* <HowItWorksSection /> */}
 
       {/* Core Digital Habit Tracker Sheet */}
       {/* <HabitTracker/> */}
-      <HabitTrackerGrid />
+      {/* <HabitTrackerGrid /> */}
 
       {/* Real-time Analytics Dashboard */}
       {/* <AnalyticsDashboard /> */}
@@ -72,7 +72,7 @@ export default function Home() {
       <Footer />
 
       {/* Modals */}
-      <CreateTrackerModal />
+      {/* <CreateTrackerModal /> */}
       {/* <ManageHabitsModal /> */}
       {/* <AuthModal /> */}
       {/* <FeedbackModal /> */}
