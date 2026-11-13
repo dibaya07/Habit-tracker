@@ -7,6 +7,8 @@ import { SITE_CONFIG } from '../../lib/data/site-config';
 import { Habit, HabitCategory } from '../../lib/types/tracker';
 import Link from 'next/link';
 import QuickSuggestions from './components/QuickSuggestions';
+import TimePeriod from './components/TimePeriod';
+import HabitList from './components/HabitList';
 // import CustomHabitForm from './components/CustomHabitForm';
 
 export default function Home () {
@@ -15,7 +17,7 @@ export default function Home () {
   const [trackerName, setTrackerName] = useState('My 30-Day Transformation');
   const [selectedDuration, setSelectedDuration] = useState<number>(30);
   const [isCustomDuration, setIsCustomDuration] = useState(false);
-  const [customDaysInput, setCustomDaysInput] = useState('45');
+  const [customDaysInput, setCustomDaysInput] = useState('21');
   const [startDate, setStartDate] = useState(new Date().toISOString().split('T')[0]);
 
   // Selected habits list
@@ -96,8 +98,10 @@ export default function Home () {
         </div>
 
         {/* Form Fields */}
-        <div className="space-y-6">
+        <div className="space-y-6 ">
           
+          {/* Name/days/starting days */}
+          <div className='flex justify-around'>
           {/* Tracker Name */}
           <div>
             <label className="text-xs font-semibold text-slate-700 dark:text-emerald-200 block mb-1.5 uppercase tracking-wider">
@@ -113,58 +117,7 @@ export default function Home () {
           </div>
 
           {/* Time Period / Duration presets */}
-          <div>
-            <label className="text-xs font-semibold text-slate-700 dark:text-emerald-200 block mb-2 uppercase tracking-wider">
-              Select Time Period
-            </label>
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-3">
-              {SITE_CONFIG.durationPresets.map((preset) => (
-                <button
-                  key={preset.days}
-                  type="button"
-                  onClick={() => {
-                    setSelectedDuration(preset.days);
-                    setIsCustomDuration(false);
-                  }}
-                  className={`p-2.5 rounded-xl border text-center transition-all ${
-                    !isCustomDuration && selectedDuration === preset.days
-                      ? 'border-[#2fe196] bg-emerald-50 dark:bg-[#2fe196]/15 text-emerald-900 dark:text-white font-bold'
-                      : 'border-slate-200 dark:border-emerald-900/40 bg-slate-50 dark:bg-emerald-950/50 text-slate-700 dark:text-emerald-200 hover:border-emerald-500'
-                  }`}
-                >
-                  <span className="text-sm font-bold block">{preset.days}d</span>
-                  <span className="text-[9px] text-slate-500 dark:text-emerald-400/80 block leading-tight">{preset.label}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* Custom Duration Input */}
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-emerald-950/40 border border-slate-200 dark:border-emerald-900/30">
-              <input
-                type="radio"
-                id="customDurationRadio"
-                checked={isCustomDuration}
-                onChange={() => setIsCustomDuration(true)}
-                className="accent-[#2fe196]"
-              />
-              <label htmlFor="customDurationRadio" className="text-xs text-slate-700 dark:text-emerald-200 font-medium cursor-pointer">
-                Custom number of days:
-              </label>
-              <input
-                type="number"
-                min="1"
-                max="365"
-                value={customDaysInput}
-                disabled={!isCustomDuration}
-                onChange={(e) => {
-                  setCustomDaysInput(e.target.value);
-                  setIsCustomDuration(true);
-                }}
-                className="w-20 px-2.5 py-1 rounded-lg bg-white dark:bg-emerald-900/40 border border-slate-300 dark:border-emerald-700/50 text-slate-900 dark:text-white text-xs font-mono disabled:opacity-40"
-              />
-              <span className="text-xs text-slate-500 dark:text-emerald-400">days (1–365)</span>
-            </div>
-          </div>
+          <TimePeriod isCustomDuration={isCustomDuration} setIsCustomDuration={setIsCustomDuration} customDaysInput={customDaysInput} setCustomDaysInput={setCustomDaysInput} setSelectedDuration={setSelectedDuration}/>
 
           {/* Start Date */}
           <div>
@@ -178,6 +131,7 @@ export default function Home () {
               className="px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-emerald-950/70 border border-slate-300 dark:border-emerald-800/50 text-slate-900 dark:text-white text-xs font-mono focus:outline-none focus:border-[#2fe196]"
             />
           </div>
+          </div>
 
           {/* Habits to Track */}
           <div>
@@ -189,34 +143,7 @@ export default function Home () {
             </div>
 
             {/* List of currently selected habits */}
-            <div className="space-y-2 mb-4 max-h-48 overflow-y-auto custom-scrollbar p-1">
-              {selectedHabits.map((habit) => (
-                <div
-                  key={habit.id}
-                  className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-emerald-950/60 border border-slate-200 dark:border-emerald-900/40 text-xs"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <span
-                      className="w-2.5 h-2.5 rounded-full"
-                      style={{ backgroundColor: habit.color || '#2fe196' }}
-                    />
-                    <span className="text-slate-900 dark:text-white font-medium">{habit.name}</span>
-                    <span className="text-[10px] text-emerald-800 dark:text-emerald-400 bg-emerald-100/70 dark:bg-emerald-900/40 px-1.5 py-0.5 rounded">
-                      {habit.category}
-                    </span>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveHabit(habit.id)}
-                    disabled={selectedHabits.length <= 1}
-                    className="p-1 text-slate-400 hover:text-rose-600 dark:text-emerald-400 dark:hover:text-rose-400 disabled:opacity-20 transition-colors"
-                  >
-                    <Trash2 className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              ))}
-            </div>
+           <HabitList selectedHabits={selectedHabits} handleRemoveHabit={handleRemoveHabit}/>
 
             {/* Add Custom Habit Form */}
             {/* <CustomHabitForm handleAddCustomHabit={handleAddCustomHabit} newHabitName={newHabitName} setNewHabitName={setNewHabitName} /> */}
@@ -228,7 +155,7 @@ export default function Home () {
                 placeholder="Type habit name (e.g. Read 20 mins)"
                 className="flex-1 px-3 py-2 rounded-xl bg-slate-50 dark:bg-emerald-950/70 border border-slate-300 dark:border-emerald-800/50 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-[#2fe196]"
               />
-              <select
+              {/* <select
                 value={newHabitCategory}
                 onChange={(e) => setNewHabitCategory(e.target.value as HabitCategory)}
                 className="px-3 py-2 rounded-xl bg-slate-50 dark:bg-emerald-950/70 border border-slate-300 dark:border-emerald-800/50 text-slate-900 dark:text-white text-xs focus:outline-none"
@@ -238,7 +165,7 @@ export default function Home () {
                 <option value="Learning">Learning</option>
                 <option value="Productivity">Productivity</option>
                 <option value="Lifestyle">Lifestyle</option>
-              </select>
+              </select> */}
               <button
                 type="submit"
                 disabled={!newHabitName.trim()}
